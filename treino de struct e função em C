@@ -1,0 +1,91 @@
+// Este programa irá mostrar os cargos de funcionários de uma empresa caso estejam cadastrados se não mostrará uma mensagem adequada, logo irei fazer alguns
+// comentários no código para ficar de melhor entendimento e explicação.
+
+#include<stdio.h>
+#include<stdbool.h>
+
+struct empresa 
+{
+char funcionario[10];
+char cargo[15];
+
+};
+
+bool comparaStrings(const char palavra1[], const char palavra2[])
+{
+  
+  int i = 0;
+
+  while(palavra1[i] == palavra2[i] 
+        && palavra1[i] != '\0' 
+        && palavra2[i] != '\0')
+        {
+    i++;
+        }
+        
+  if (palavra1[i]=='\0' && palavra2[i] == '\0')
+  {
+    return true;
+  }
+  
+  else
+  {
+    return false;
+  }
+}
+
+int buscarString(struct empresa mercado[],const char procurar[], const int numDePalavras){
+
+bool comparaStrings(const char palavra1[], const char palavra2[]);
+
+int i = 0;
+
+while (i < numDePalavras){
+
+if (comparaStrings(procurar,mercado[i].funcionario)){
+  return i;
+}
+else{
+  i++;
+}
+  
+}
+return -1;
+}
+
+int main(void){
+
+int buscarString(struct empresa mercado[],const char procurar[], const int numDePalavras);
+
+const int NUMERODEDEFINICOES = 5;
+
+char palavra[10]={'\0'};
+int ResultadoDepesquisa;
+
+const struct empresa olx [NUMERODEDEFINICOES]={
+  {"Joao","fullstack"},
+  {"Jose","contabilidade"},
+  {"Maria","front-end"},
+  {"Ana","marketing"},
+  {"Julio","back-end"}};
+
+printf("Diga o nome de um funcionário: ");
+scanf("%s",palavra);
+
+ResultadoDepesquisa = buscarString(olx, palavra, NUMERODEDEFINICOES);
+
+if(ResultadoDepesquisa != -1){
+  printf("%s\n",olx[ResultadoDepesquisa].cargo);
+}
+
+else{
+  printf("Funcionário não encontrado");
+}
+
+return 0;
+}
+
+
+
+
+
